@@ -1,36 +1,47 @@
 package pl.drzazga.jpa.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 @Entity
 @Table(name = "tasks")
-public class Task extends BaseEntity {
+public class Task {
 
-	@ManyToOne
-	private User user;
+	@Id
+	@GeneratedValue
+	private Long id;
 	
-	@NotBlank
+	@ManyToOne
+	private Project project;
+	
+	@Column
 	private String name;
 
-	public Task(String name) {
-		this.name = name;
+	public Long getId() {
+		return id;
 	}
-	
-	protected Task() {}
-	
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
 	public String getName() {
 		return name;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
+	public void setName(String name) {
+		this.name = name;
 	}
 }

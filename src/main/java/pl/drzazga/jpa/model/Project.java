@@ -18,7 +18,7 @@ public class Project {
 	@GeneratedValue
 	private Long id;
 	
-	private String projectName;
+	private String name;
 	
 	private LocalDate start;
 	
@@ -40,12 +40,12 @@ public class Project {
 		this.id = id;
 	}
 
-	public String getProjectName() {
-		return projectName;
+	public String getName() {
+		return name;
 	}
 
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public BigDecimal getBudget() {

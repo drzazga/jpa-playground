@@ -17,10 +17,8 @@ public class User {
 	@GeneratedValue
 	private Long id;
 	
-	@Column(name = "email")
 	private String email;
 	
-	@Column(name = "password")
 	private String password;
 	
 	@Column(name = "first_name")

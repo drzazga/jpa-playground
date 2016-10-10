@@ -1,6 +1,5 @@
 package pl.drzazga.jpa.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,7 +17,6 @@ public class Task {
 	@ManyToOne
 	private Project project;
 	
-	@Column
 	private String name;
 
 	public Long getId() {

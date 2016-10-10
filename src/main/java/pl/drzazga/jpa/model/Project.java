@@ -1,7 +1,8 @@
 package pl.drzazga.jpa.model;
 
-import java.util.Date;
-import java.util.List;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,17 +20,17 @@ public class Project {
 	
 	private String projectName;
 	
-	private Date start;
+	private LocalDate start;
 	
-	private Date end;
+	private LocalDate end;
 	
-	private Double budget;
+	private BigDecimal budget;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
-	private List<User> users;
+	private Set<User> users;
 	
 	@OneToMany(fetch = FetchType.EAGER)
-	private List<Task> tasks;
+	private Set<Task> tasks;
 
 	public Long getId() {
 		return id;
@@ -47,43 +48,43 @@ public class Project {
 		this.projectName = projectName;
 	}
 
-	public Double getBudget() {
+	public BigDecimal getBudget() {
 		return budget;
 	}
 
-	public void setBudget(Double budget) {
+	public void setBudget(BigDecimal budget) {
 		this.budget = budget;
 	}
 
-	public Date getStart() {
+	public LocalDate getStart() {
 		return start;
 	}
 
-	public void setStart(Date start) {
+	public void setStart(LocalDate start) {
 		this.start = start;
 	}
 
-	public Date getEnd() {
+	public LocalDate getEnd() {
 		return end;
 	}
 
-	public void setEnd(Date end) {
+	public void setEnd(LocalDate end) {
 		this.end = end;
 	}
 
-	public List<User> getUsers() {
+	public Set<User> getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<User> users) {
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
 
-	public List<Task> getTasks() {
+	public Set<Task> getTasks() {
 		return tasks;
 	}
 
-	public void setTasks(List<Task> tasks) {
+	public void setTasks(Set<Task> tasks) {
 		this.tasks = tasks;
 	}
 }

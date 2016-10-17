@@ -2,6 +2,7 @@ package pl.drzazga.jpa.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -32,20 +33,19 @@ public class Project {
 	@OneToMany(fetch = FetchType.EAGER)
 	private Set<Task> tasks;
 
+	protected Project() {
+	}
+	
+	public Project(String name) {
+		this.name = Objects.requireNonNull(name);
+	}
+	
 	public Long getId() {
 		return id;
 	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
+	
 	public String getName() {
 		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public BigDecimal getBudget() {
@@ -53,6 +53,9 @@ public class Project {
 	}
 
 	public void setBudget(BigDecimal budget) {
+		if (budget.compareTo(BigDecimal.ZERO) < 0) {
+			throw new IllegalArgumentException("Budget shouldn't be below 0!");
+		}
 		this.budget = budget;
 	}
 
@@ -60,15 +63,18 @@ public class Project {
 		return start;
 	}
 
-	public void setStart(LocalDate start) {
-		this.start = start;
-	}
-
 	public LocalDate getEnd() {
 		return end;
 	}
-
-	public void setEnd(LocalDate end) {
+	
+	public void setDateRange(LocalDate start, LocalDate end) {
+		if (start == null) {
+			throw new IllegalArgumentException("Start date shouldn't be null!");
+		} else if (end != null && start.isAfter(end)) {
+			throw new IllegalArgumentException("Start date should be before end date!");
+		}
+		
+		this.start = start;
 		this.end = end;
 	}
 

@@ -1,5 +1,7 @@
 package pl.drzazga.jpa.model;
 
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,12 +21,15 @@ public class Task {
 	
 	private String name;
 
+	protected Task() {
+	}
+	
+	public Task(String name) {
+		this.name = Objects.requireNonNull(name);
+	}
+	
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public Project getProject() {
@@ -37,9 +42,5 @@ public class Task {
 
 	public String getName() {
 		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 }

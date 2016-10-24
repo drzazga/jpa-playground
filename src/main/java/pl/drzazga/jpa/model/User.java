@@ -4,19 +4,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User extends BaseEntity {
 
-	@Id
-	@GeneratedValue
-	private Long id;
-	
 	private String email;
 	
 	private String password;
@@ -29,10 +23,6 @@ public class User {
 	
 	@ManyToMany
 	private List<Project> projects;
-
-	public Long getId() {
-		return id;
-	}
 
 	public String getEmail() {
 		return email;

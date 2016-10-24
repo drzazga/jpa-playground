@@ -7,18 +7,12 @@ import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Project {
+public class Project extends BaseEntity {
 
-	@Id
-	@GeneratedValue
-	private Long id;
-	
 	private String name;
 	
 	private LocalDate start;
@@ -38,10 +32,6 @@ public class Project {
 	
 	public Project(String name) {
 		this.name = Objects.requireNonNull(name);
-	}
-	
-	public Long getId() {
-		return id;
 	}
 	
 	public String getName() {
